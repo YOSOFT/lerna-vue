@@ -106,3 +106,84 @@ After successful version, the current branch will be pushed automatically, which
         }
     }
 }
+
+lerna publish
+The function of lerna publish can include version work or simply publish.
+
+See official documentation lerna publish
+
+lerna publish
+lerna publish calls lerna version first, and then determines whether to publish to npm
+
+lerna publish from-git
+From git is based on the software package submitted by git. Generally, it is submitted through lerna version
+
+lerna publish from-package
+From package does not exist in the registry for this version of the latest commit publishing package (I have not used this)
+
+lerna does not publish packages marked private( package.json "private": true)
+
+
+changelog
+According to the Convention commit submission specification, the changelog file can be generated for each package through the tool.
+
+Convention commit support
+The use of the Convention commit specification can also be seen in this: Write guide for Commit message and Change log
+
+Install the following dependencies:
+
+```sh
+yarn add -W -D commitizen cz-conventional-changelog @commitlint/cli @commitlint/config-conventional husky conventional-changelog-cli
+```
+
+
+commitizen:
+
+A tool for writing qualified commit messages
+
+cz-conventional-changelog:
+
+Commit message format for commitzen to support Angular
+
+to configure package.json Add the following configuration
+
+{
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    }
+}
+At this point, you can replace git commit with git cz command to generate a formatted Commit message.
+
+The git cz command has the following options
+
+
+
+@commitlint/cli:
+commitlint is used to check whether your submission message conforms to the submission format, similar to eslint to verify js syntax
+
+@commitlint/config-conventional:
+commitlint verification rule, similar to eslint config standard
+
+Add and configure commitlintrc.js file
+
+module.exports = {
+    extends: ['@commitlint/config-conventional'],
+    rules: {
+        ...otherRules // You can continue to configure your rules
+    }
+};
+
+husky:
+husky is a Git hooks tool, which is used to verify the message content when commit
+
+to configure package.json File, add the following
+
+{
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    }
+}
