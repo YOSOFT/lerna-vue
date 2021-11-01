@@ -14,3 +14,14 @@ demo/package.json to configure:
     }
 }
 ```
+
+yarn workspaces info
+
+Install / remove dependent modules
+Single package workspace
+
+# Package a installing axios
+yarn workspace packageA add axios
+
+# Package a remove axios
+yarn workspace packageA remove axios
