@@ -4,5 +4,15 @@
   ],
   "version": "independent",
   "npmClient": "yarn",
-  "useWorkspaces": true
+  "useWorkspaces": true,
+  "command": {
+    "version": {
+        "allowBranch": "main",
+        "exact": true,
+        "ignoreChanges": [
+            "**/*.md"
+        ],
+        "message": "build: release version %v"
+    }
+}
 }
