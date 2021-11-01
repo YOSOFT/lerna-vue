@@ -33,3 +33,13 @@ yarn add -W -D commitizen
 
 # root package remove commitzen
 yarn remove -W commitizen
+
+Run the scripts command for a single package
+# Run the dev command of package a
+yarn workspace packageA dev
+# Here is the run build command on each workspace
+yarn workspaces run build
+
+```sh
+yarn workspace demo serve
+```
