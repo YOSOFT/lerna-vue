@@ -187,3 +187,31 @@ to configure package.json File, add the following
         }
     }
 }
+
+At this point, when a new commit message does not conform to the specification, the commit will be blocked.
+
+conventional-changelog-cli:
+Generated according to commit message changelog.md File (here, the function and lerna version -- conventional commits generate changelog partially overlap, which will be differentiated in detail below).
+
+For example: conventional changelog - P angular - I CHANGELOG.md -s -r 2
+
+Note: the changelog generated here is for the entire warehouse, not for each package
+
+Generate changelog
+The generation of changelog depends on the above conventional commit specification message
+
+The whole warehouse changelog
+Build changes since last release:
+
+conventional-changelog -p angular -i CHANGELOG.md -w
+If this is the first time you have used this tool and want to generate all previous change logs, you can do the following:
+
+conventional-changelog -p angular -i CHANGELOG.md -s -r 0
+See: conventional-changelog-cli
+
+
+Each package workspace is a separate changelog
+When lerna version is used, the automatic mode -- conventional commitments command generates a changelog for each package workspace at the same time
+
+lerna version --conventional-commits
+Note: after lerna version succeeds, a changelog will be generated for each package, including the root package
