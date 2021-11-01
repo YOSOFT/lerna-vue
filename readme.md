@@ -25,3 +25,11 @@ yarn workspace packageA add axios
 
 # Package a remove axios
 yarn workspace packageA remove axios
+
+
+Instalar paquetes para todos los workspace
+# root package installation commitzen
+yarn add -W -D commitizen
+
+# root package remove commitzen
+yarn remove -W commitizen

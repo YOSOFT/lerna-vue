@@ -3,6 +3,7 @@
   "private": true,
   "license": "MIT",
   "devDependencies": {
+    "commitizen": "^4.2.4",
     "lerna": "^4.0.0"
   },
   "workspaces": [
