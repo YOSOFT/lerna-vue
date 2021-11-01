@@ -74,3 +74,35 @@ lerna version is used for version bump and supports manual and automatic modes
 Manually determine the new version
 # Follow the prompts to select the version
 lerna version
+
+Auto version
+Automatically determine the version according to the Convention commit specification
+
+There is a feat commit: minor version needs to be updated
+fix commit exists: patch version needs to be updated
+There is a BREAKING CHANGE submission: a large version needs to be updated
+
+# Generate the changelog file and change the version according to commit
+lerna version --conventional-commits
+
+# Generate the changelog file and change the version according to the commit without prompting the user to enter the version
+lerna version --conventional-commits --yes
+See official documentation lerna version
+
+After successful version, the current branch will be pushed automatically, which can be combined with configuration lerna.json In the file command, the version field configuration allows the branch of version, commit information, etc
+
+{
+    "npmClient": "yarn",
+    "useWorkspaces": true,
+    "version": "0.0.1", 
+    "command": {
+        "version": {
+            "allowBranch": "master",
+            "exact": true,
+            "ignoreChanges": [
+                "**/*.md"
+            ],
+            "message": "build: release version %v"
+        }
+    }
+}
